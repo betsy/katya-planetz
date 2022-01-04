@@ -26,7 +26,7 @@ inputBox.onkeyup = (e)=>{
         let allList = suggBox.querySelectorAll("li");
         for (let i = 0; i < allList.length; i++) {
             //adding onclick attribute in all li tag
-            allList[i].setAttribute("onclick", "webLink = planets[this.innerText]; linkTag.setAttribute('href', webLink); linkTag.click();");
+            allList[i].setAttribute("onclick", "select(this)");
         }
     }else{
         searchWrapper.classList.remove("active"); //hide autocomplete box
@@ -36,11 +36,9 @@ inputBox.onkeyup = (e)=>{
 function select(element){
     let selectData = element.textContent;
     inputBox.value = selectData;
-    icon.onclick = ()=>{
-        webLink = planets[selectData];
-        linkTag.setAttribute("href", webLink);
-        linkTag.click();
-    }
+    webLink = "planets/" + planets[selectData];
+    linkTag.setAttribute("href", webLink);
+    linkTag.click();
     searchWrapper.classList.remove("active");
 }
 
